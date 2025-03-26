@@ -1,0 +1,99 @@
+/* PureParallaxBackground.css */
+.parallax-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%; /* Extra height to account for movement */
+    will-change: transform; /* Performance optimization */
+  }
+  
+  /* Deep space background with gradient */
+  .deep-space {
+    background: linear-gradient(135deg, #020024 0%, #090979 35%, #020024 100%);
+    z-index: -4;
+  }
+  
+  /* Nebula effect using radial gradients */
+  .nebula {
+    background: radial-gradient(
+      circle at 30% 50%,
+      rgba(143, 0, 255, 0.15) 0%,
+      rgba(143, 0, 255, 0) 60%
+    ), radial-gradient(
+      circle at 70% 70%,
+      rgba(0, 117, 255, 0.1) 0%,
+      rgba(0, 117, 255, 0) 70%
+    );
+    z-index: -3;
+  }
+  
+  /* Stars layer container */
+  .stars {
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Regular stars */
+  .star {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: twinkle 4s infinite alternate;
+  }
+  
+  /* Bright stars - larger and brighter */
+  .bright-stars {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bright-star {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    animation: twinkle-bright 3s infinite alternate;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Animation for twinkling stars */
+  @keyframes twinkle {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+  
+  @keyframes twinkle-bright {
+    0% {
+      opacity: 0.5;
+      box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+      opacity: 0.5;
+      box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
+    }
+  }

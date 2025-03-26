@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './Login';
+import Home from './Home';
+import AdminPortal from './AdminPortal';
+import Results from './Results';
+import Teams from './Teams';
+import AdminProtectedRoute from './ProtectedRoute'; // our new component
+import Apply from './ApplyPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route 
+          path="/admin-portal" 
+          element={
+            <AdminProtectedRoute>
+              <AdminPortal />
+            </AdminProtectedRoute>
+          } 
+        />
+        <Route path="/results" element={<Results />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/apply" element={<Apply />} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

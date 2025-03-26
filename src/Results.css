@@ -1,0 +1,915 @@
+/* Enhanced ResultsPage.css - Linux/FOSS/Space theme with more animations */
+
+/* Existing animations enhanced */
+@keyframes results-space-float {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-70vh) rotate(360deg);
+      opacity: 0.3;
+    }
+  }
+  
+  @keyframes results-terminal-blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes results-glow {
+    0%, 100% {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    }
+  }
+  
+  /* New animations */
+  @keyframes pulse-border {
+    0%, 100% {
+      box-shadow: 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+  }
+  
+  @keyframes shooting-star {
+    0% {
+      transform: translateX(0) translateY(0) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100vw) translateY(100vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scale-in {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Base styles enhanced */
+  .results-page-container {
+    min-height: 100vh;
+    background-color: #111;
+    color: #f8f8f2;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    
+    flex-direction: column ;
+  }
+
+
+
+/* Introduction text styling */
+.results-page-intro {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: center;
+  color: var(--terminal-white);
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 221, 0, 0.2);
+}
+  
+  /* Space background enhanced */
+  .results-page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at bottom, #1a1a2e 0%, #090909 100%);
+    overflow: hidden;
+  }
+  
+  /* Add dark nebula effect */
+  .results-page-background::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23404' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23505'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
+    animation: slow-rotate 240s linear infinite;
+  }
+  
+  @keyframes slow-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Stars container enhanced */
+  .results-page-stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  /* Star styling enhanced */
+  .results-page-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 2;
+    animation: twinkle 5s ease-in-out infinite;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.3);
+    }
+  }
+  
+  /* Shooting star */
+  .results-page-shooting-star {
+    position: absolute;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,215,0,0) 0%, rgba(255,215,0,0.7) 50%, rgba(255,215,0,1) 100%);
+    transform-origin: 0 0;
+    z-index: 3;
+    animation: shooting-star 3s ease-out infinite;
+    box-shadow: 0 0 10px #FFD700;
+  }
+  
+  /* Binary styling enhanced */
+  .results-page-binary {
+    position: absolute;
+    color: rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    z-index: 2;
+    animation: results-space-float 100s linear infinite;
+  }
+  
+  /* Confetti particles */
+  .results-page-confetti {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    z-index: 2;
+    animation: confetti-fall 15s ease-in-out infinite;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Content area enhanced */
+/* Update the container to accommodate the new layout */
+.results-page-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fade-in-up 0.8s ease-out;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  /* Title enhanced */
+  .results-page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: results-glow 3s ease-in-out infinite;
+    position: relative;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  }
+  
+  .results-page-title::before,
+  .results-page-title::after {
+    content: '>';
+    display: inline-block;
+    margin: 0 1rem;
+    opacity: .8;
+  }
+  
+  .results-page-title::after {
+    content: '_';
+    margin-left: 0.5rem;
+    animation: results-terminal-blink 1s step-end infinite;
+  }
+
+
+
+
+
+/* When there's only one candidate in a section, switch to flexbox layout */
+.results-page-candidates-grid.single-candidate {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Control the width of the single card to maintain consistent sizing */
+.results-page-candidates-grid.single-candidate .results-page-candidate-card {
+  width: 280px; /* You can adjust this width to match your design */
+  margin: 0 auto;
+}
+
+
+  
+  /* Make each role section appear with staggered timing */
+/* Modify role section to take approximately half the container width */
+.results-page-role-section {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #FFD700;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 0; /* Remove bottom margin since we're using gap */
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  animation: pulse-border 4s ease-in-out infinite, slide-in 0.5s ease-out;
+  animation-fill-mode: both;
+  width: calc(50% - 1rem); /* Take up approximately half the width minus gap */
+  box-sizing: border-box;
+  flex: 1 1 45%; 
+}
+  
+  .results-page-role-section:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  .results-page-role-section:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  .results-page-role-section:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  
+  .results-page-role-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    z-index: 5;
+  }
+  
+  /* Role title enhanced */
+  .results-page-role-title {
+    color: #FFD700;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+  
+  .results-page-role-title::before {
+    content: '# ';
+    opacity: 0.7;
+  }
+  
+  /* Grid layout enhanced */
+  .results-page-candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+
+
+
+  /* Special handling for 3 cards */
+.results-page-candidates-grid.three-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Special handling for 4 cards */
+.results-page-candidates-grid.four-cards {
+  grid-template-columns: repeat(2, 1fr); /* Two columns with two rows often looks better */
+}
+
+/* For larger displays, allow 4 cards to display in a single row if there's enough space */
+@media (min-width: 900px) {
+  .results-page-candidates-grid.four-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+
+/* Make sections with 4+ candidates take full width */
+.results-page-role-section.full-width-section {
+  width: 100%; /* Take up full width */
+  flex: 0 0 100%; /* Don't grow or shrink, maintain 100% width */
+}
+
+/* Ensure four cards display properly in full-width sections */
+.results-page-role-section.full-width-section .results-page-candidates-grid.four-cards {
+  grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
+}
+
+/* For mobile responsiveness */
+@media (max-width: 900px) {
+  .results-page-role-section.full-width-section .results-page-candidates-grid.four-cards {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .results-page-role-section.full-width-section .results-page-candidates-grid.four-cards {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .results-page-candidates-grid.three-cards,
+  .results-page-candidates-grid.four-cards {
+    grid-template-columns: repeat(2, 1fr); /* Force 2 columns on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .results-page-candidates-grid.three-cards,
+  .results-page-candidates-grid.four-cards {
+    grid-template-columns: 1fr; /* Single column on phones */
+  }
+}
+
+
+  /* Individual candidate cards enhanced */
+  .results-page-candidate-card {
+    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    animation: scale-in 0.5s ease-out;
+    animation-fill-mode: both;
+    width: 100%; /* Force full width of grid cell */
+    height: 100%; /* Maintain consistent height */
+    margin-right: 0; /* Center the cards */
+ 
+    box-sizing: border-box;
+  }
+  
+  /* Stagger the entrance of cards */
+  .results-page-candidate-card:nth-child(2n) {
+    animation-delay: 0.1s;
+  }
+  
+  .results-page-candidate-card:nth-child(3n) {
+    animation-delay: 0.2s;
+  }
+  
+  .results-page-candidate-card:nth-child(4n) {
+    animation-delay: 0.3s;
+  }
+  
+  .results-page-candidate-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 25px rgba(255, 215, 0, 0.25);
+    border-color: #FFD700;
+    z-index: 20;
+  }
+  
+  /* Card glow effect on hover */
+  .results-page-candidate-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #FFD700, transparent, #FFD700);
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .results-page-candidate-card:hover::before {
+    opacity: 0.4;
+    animation: rotate-gradient 3s linear infinite;
+  }
+  
+  @keyframes rotate-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .results-page-candidate-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s ease;
+  }
+  
+  .results-page-candidate-card:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Photo container enhanced */
+  .results-page-candidate-photo-container {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background-color: rgba(15, 15, 15, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .results-page-candidate-card:hover .results-page-candidate-photo-container {
+    border-color: #FFD700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
+  }
+  
+  /* Photo styling enhanced */
+  .results-page-candidate-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .results-page-candidate-card:hover .results-page-candidate-photo {
+    transform: scale(1.1);
+  }
+  
+  .results-page-candidate-photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  /* Name styling enhanced */
+  .results-page-candidate-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #FFD700;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .results-page-candidate-card:hover .results-page-candidate-name {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  }
+  
+  /* Additional text styling */
+  .results-page-candidate-department {
+    font-size: 0.9rem;
+    color: #e6e6e6;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .results-page-candidate-card:hover .results-page-candidate-department {
+    color: #ffffff;
+  }
+  
+  .results-page-candidate-year {
+    font-size: 0.8rem;
+    color: rgba(255, 215, 0, 0.7);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .results-page-candidate-card:hover .results-page-candidate-year {
+    color: rgba(255, 215, 0, 1);
+  }
+  
+  /* Loading animation enhanced */
+  .results-page-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+  
+  .results-page-loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 215, 0, 0.1);
+    border-left-color: #FFD700;
+    border-radius: 50%;
+    animation: results-spinner 1s linear infinite;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  @keyframes results-spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .results-page-loading-text {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  
+  .results-page-loading-text::after {
+    content: '_';
+    animation: results-terminal-blink 1s step-end infinite;
+  }
+  
+  /* Error container enhanced */
+  .results-page-error-container {
+    background-color: rgba(30, 0, 0, 0.8);
+    color: #FFD700;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+  
+  .results-page-error-container::before {
+    content: '! ERROR !';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    opacity: 0.7;
+    color: #FF3333;
+  }
+  
+  /* Empty container enhanced */
+  .results-page-empty-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    padding: 3rem 1.5rem;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    animation: pulse-border 3s ease-in-out infinite;
+  }
+  
+  .results-page-empty-text {
+    color: #FFD700;
+    font-size: 1.2rem;
+    position: relative;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+  
+  .results-page-empty-text::before,
+  .results-page-empty-text::after {
+    content: '[';
+    margin: 0 0.5rem;
+    opacity: 0.7;
+  }
+  
+  .results-page-empty-text::after {
+    content: ']';
+  }
+  
+  /* Responsive styling enhanced */
+  @media (max-width: 768px) {
+    .results-page-title {
+      font-size: 2rem;
+    }
+    
+    .results-page-role-title {
+      font-size: 1.5rem;
+    }
+    
+    .results-page-candidate-photo-container {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .results-page-title {
+      font-size: 1.8rem;
+    }
+    
+    .results-page-candidates-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .results-page-candidate-card {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.results-page-candidate-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 30px rgba(255, 215, 0, 0.3);
+  z-index: 30;
+}
+
+
+/* Mobile-First Responsive Enhancements */
+
+/* Make role sections full-width on smaller screens */
+@media (max-width: 900px) {
+  .results-page-role-section {
+    width: 100%; /* Full width on mobile */
+    margin-bottom: 2rem; /* Add spacing between sections */
+  }
+  
+  .results-page-content {
+    flex-direction: column; /* Stack content vertically */
+    padding: 0 1rem; /* Add some padding on the sides */
+  }
+}
+
+/* Improve readability and spacing for smaller screens */
+@media (max-width: 768px) {
+  .results-page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .results-page-role-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .results-page-candidate-photo-container {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .results-page-candidates-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    gap: 1rem;
+  }
+  
+  .results-page-candidate-card {
+    padding: 1rem;
+  }
+  
+  .results-page-candidate-name {
+    font-size: 1rem;
+  }
+  
+  .results-page-candidate-department,
+  .results-page-candidate-year {
+    font-size: 0.8rem;
+  }
+  
+  /* Reduce animation intensity on mobile */
+  .results-page-candidate-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* Further adjustments for phone-sized screens */
+@media (max-width: 480px) {
+  .results-page-title {
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .results-page-candidates-grid {
+    grid-template-columns: 1fr; /* Single column on phones */
+  }
+  
+  .results-page-candidate-photo-container {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .results-page-role-section {
+    padding: 1rem;
+  }
+  
+  .results-page-intro {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Simplify animations to improve performance */
+  .results-page-background::before {
+    animation: slow-rotate 300s linear infinite;
+  }
+  
+  /* Reduce the number of stars and effects on small screens */
+  .results-page-star:nth-child(3n+1) {
+    display: none;
+  }
+  
+  .results-page-binary:nth-child(2n+1) {
+    display: none;
+  }
+  
+  .results-page-confetti {
+    display: none;
+  }
+  
+  /* Simplify card hover states on touch devices */
+  .results-page-candidate-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+  }
+}
+
+/* Improve touch experience for mobile devices */
+@media (hover: none) {
+  .results-page-candidate-card:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  }
+  
+  .results-page-candidate-card:active {
+    transform: translateY(-3px);
+    transition: transform 0.2s;
+  }
+  
+  /* Don't show hover effects that won't work well on touch screens */
+  .results-page-candidate-card:hover::before,
+  .results-page-candidate-card:hover::after {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .results-page-title::before,
+  .results-page-title::after {
+    display: none; /* Remove decorative elements that may cause overflow */
+  }
+  
+  .results-page-role-title::before {
+    display: none;
+  }
+  
+  .results-page-candidate-photo-container {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Fix vertical spacing */
+.results-page-container {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the shooting star animation less resource-intensive */
+@media (max-width: 768px) {
+  @keyframes shooting-star {
+    0% {
+      transform: translateX(0) translateY(0) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    70% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateX(100vw) translateY(50vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+}
