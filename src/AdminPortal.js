@@ -31,27 +31,30 @@ const AdminPortal = () => {
   const handleAdminLogin = async (e) => {
     e.preventDefault();
   
-    console.log('Sending Admin Name:', adminName);
-    console.log('Sending Admin Password:', adminPassword);
-  
     try {
-      const response = await fetch('http://localhost:5000/admin-portal', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/admin-portal`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ adminName, adminPassword }),
+        credentials: 'include' // This can help with CORS issues
       });
   
+      const responseData = await response.json();
+  
       if (response.ok) {
+        // Store token if sent by backend
+        if (responseData.token) {
+          localStorage.setItem('token', responseData.token);
+        }
         setShowAdminLogin(false);
       } else {
-        const errorData = await response.json();
-        console.log('Error Response:', errorData);
-        setError('Invalid admin credentials');
+        console.error('Login Error:', responseData);
+        setError(responseData.message || 'Invalid admin credentials');
       }
     } catch (err) {
-      console.error('Error:', err);
+      console.error('Login Fetch Error:', err);
       setError('Failed to verify admin credentials');
     }
   };

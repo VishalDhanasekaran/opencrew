@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-// Protected route component that ensures only authenticated admins can access the route
 const AdminProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
+  // Use environment variable for backend URL
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
-      // If no token exists, we know they're not authenticated
       if (!token) {
         setIsAuthenticated(false);
         setIsLoading(false);
@@ -18,8 +19,8 @@ const AdminProtectedRoute = ({ children }) => {
       }
 
       try {
-        // Validate the token with your backend
-        const response = await fetch('/admin-portal', {
+        // Use full URL for authentication check
+        const response = await fetch(`${BACKEND_URL}/admin-portal`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,7 +29,6 @@ const AdminProtectedRoute = ({ children }) => {
         if (response.ok) {
           setIsAuthenticated(true);
         } else {
-          // If the backend rejects the token, clear it from localStorage
           localStorage.removeItem('token');
           setIsAuthenticated(false);
         }
@@ -41,9 +41,8 @@ const AdminProtectedRoute = ({ children }) => {
     };
 
     checkAuth();
-  }, []);
+  }, [BACKEND_URL]);
 
-  // Show loading indicator while checking authentication
   if (isLoading) {
     return (
       <div className="auth-loading-container">
@@ -53,12 +52,10 @@ const AdminProtectedRoute = ({ children }) => {
     );
   }
 
-  // If not authenticated, redirect to home with the intended location stored
   if (!isAuthenticated) {
     return <Navigate to="/" state={{ from: location, adminRequired: true }} replace />;
   }
 
-  // If authenticated, render the protected component
   return children;
 };
 
