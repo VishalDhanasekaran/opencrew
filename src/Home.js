@@ -340,23 +340,47 @@
 
 
 
-    const handleAdminLogin = (e) => {
+    const handleAdminLogin = async (e) => {
       e.preventDefault();
       
-      // Validate admin credentials
-      if (name === ADMIN_NAME && password === ADMIN_PASSWORD) {
-        setError('');
-        setTerminalText('sudo access granted; navigating to admin-portal...');
-        setIsTyping(true);
-        
-        setTimeout(() => {
-          navigate('/admin-portal');
-        }, 2000);
-      } else {
-        setError('Permission denied: Invalid credentials');
+      // Backend URL - ensure this is set correctly
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    
+      try {
+        const response = await fetch(`${BACKEND_URL}/admin-portal`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            adminName: name, 
+            adminPassword: password 
+          }),
+        });
+    
+        const responseData = await response.json();
+    
+        if (response.ok && responseData.success) {
+          // Store token if available
+          if (responseData.token) {
+            localStorage.setItem('token', responseData.token);
+          }
+    
+          setError('');
+          setTerminalText('sudo access granted; navigating to admin-portal...');
+          setIsTyping(true);
+          
+          setTimeout(() => {
+            navigate('/admin-portal');
+          }, 2000);
+        } else {
+          setError(responseData.message || 'Permission denied: Invalid credentials');
+        }
+      } catch (err) {
+        console.error('Login Error:', err);
+        setError('Network error: Unable to connect to server');
       }
     };
-
 
 
     const handleResultsNavigation = () => {
