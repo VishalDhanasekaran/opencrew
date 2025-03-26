@@ -10,7 +10,7 @@ const Footer = () => {
         <p className="foss-home-footer-copyright mb-0">
           <span className="foss-home-terminal-prompt">$ echo </span> 
           <span className="foss-copyright-text">
-            "Together, we build the future of Open Source | FOSS Club of CIT © {currentYear} | Developed by: Lithika Rajkumar"
+            "Together, we build the future of Open Source | FOSS Club of CIT © {currentYear} | Developed by: Lithika Rajkumar . Vishal D . Anush M"
           </span>
         </p>
       </div>
