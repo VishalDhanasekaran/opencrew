@@ -36,11 +36,13 @@ const Teams = () => {
     }
   ];
 
-  const [teams, setTeams] = useState(teamsData);
   const [activeTeam, setActiveTeam] = useState(teamsData[0].id);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [candidates, setCandidates] = useState([]);
+
+  // Rest of the code remains the same...
+
 
   // Fetch candidates from Firestore
   useEffect(() => {
@@ -144,7 +146,7 @@ const Teams = () => {
         </div>
         
         <div className="teams-page-navigation">
-          {teams.map(team => (
+          {teamsData.map(team => (
             <button 
               key={team.id}
               className={`teams-page-nav-button ${activeTeam === team.id ? 'active' : ''}`}
@@ -155,7 +157,7 @@ const Teams = () => {
           ))}
         </div>
         
-        {teams.map(team => (
+        {teamsData.map(team => (
           <div 
             key={team.id} 
             className={`teams-page-team-section ${activeTeam === team.id ? 'active' : ''}`}
