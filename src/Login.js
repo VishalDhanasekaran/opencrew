@@ -77,7 +77,7 @@ const Login = () => {
           </div>
         </div>
         <div className="footer text-center mt-3">
-          <p>&copy; {new Date().getFullYear()} FOSS-CIT | Developed by: Lithika Rajkumar</p>
+          <p>&copy; {new Date().getFullYear()} FOSS-CIT | Developed by: Lithika Rajkumar . Vishal D . Anush M</p>
         </div>
       </div>
     </>
