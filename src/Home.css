@@ -19,6 +19,7 @@
   color: var(--terminal-yellow);
   min-height: 100vh;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 /* Code Rain Effect - Modified for yellow */
@@ -478,9 +479,11 @@
 
 /* Content sections container */
 .foss-home-content {
-  width: 1200px;
+  flex: 1 0 auto;
+  width: 100%;
   position: relative;
-  min-height: 500px; /* Keep minimum height to prevent layout shifts */
+  padding-bottom: 20px;
+  min-height: 500px;
 }
 
 /* Content sections */
@@ -884,12 +887,14 @@
   margin-top: 50px; /* Increased margin to create more space */
   background-color: var(--terminal-black); /* Match your theme */
   z-index: 10; /* Ensure it's above background effects but doesn't overlap important content */
+  flex-shrink: 0;
 }
 
 .foss-home-footer-bottom {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 15px;
 }
 
 .foss-home-footer-copyright {
@@ -912,13 +917,54 @@
 }
 
 /* Media query for small screens */
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .foss-home-content {
+    width: 100%;
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+}
+
 @media (max-width: 768px) {
-  .foss-home-footer {
-    padding: 10px 0;
-    margin-top: 30px;
+  .foss-home-container {
+    padding: 10px;
+  }
+
+  .foss-home-nav-list {
+    flex-direction: column;
   }
   
+  .foss-home-nav-item {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  
+  .foss-home-teams-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .foss-home-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .foss-home-admin-button {
+    margin-top: 10px;
+  }
+
+  .foss-home-footer {
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+
   .foss-home-footer-copyright {
     font-size: 12px;
+  }
+
+  body, html {
+    overflow-x: hidden;
+    max-width: 100%;
   }
 }
