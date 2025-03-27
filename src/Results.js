@@ -104,6 +104,9 @@ const Results = () => {
         <div className="results-page-loading-container">
           <div className="results-page-loading-spinner"></div>
           <div className="results-page-loading-text">Loading candidates</div>
+          <div className="results-page-loading-warning">
+            Data is loading, don't refresh the page
+          </div>
         </div>
       </ContentWrapper>
     );
