@@ -80,11 +80,7 @@ const Results = () => {
                 <FaHome className="foss-home-nav-icon" /> Home
               </Link>
             </li>
-            <li className="foss-home-nav-item">
-              <Link to="/teams" className="foss-home-nav-link">
-                <FaUsers className="foss-home-nav-icon" /> Our Teams
-              </Link>
-            </li>
+         
             <li className="foss-home-nav-item">
               <Link to="/home" className="foss-home-nav-link">
                 <FaArrowLeft className="foss-home-nav-icon" /> Back
